@@ -36,8 +36,16 @@ jobs:
           cp -R dist pages-preview
           python3 - <<'PY'
           from pathlib import Path
+          from hashlib import sha256
           page = Path("pages-preview/index.html")
           html = page.read_text()
+          # Match each page release to its CSS/JS, even when browsers cache old assets.
+          for name in ("style.css", "app.js"):
+              asset = page.parent / name
+              version = sha256(asset.read_bytes()).hexdigest()[:12]
+              versioned = asset.with_name(f"{asset.stem}.{version}{asset.suffix}")
+              versioned.write_bytes(asset.read_bytes())
+              html = html.replace(f'"{name}"', f'"{versioned.name}"')
           html = html.replace("</head>", '<meta name="robots" content="noindex, nofollow"></head>')
           page.write_text(html)
           Path("pages-preview/robots.txt").write_text("User-agent: *\nDisallow: /\n")
