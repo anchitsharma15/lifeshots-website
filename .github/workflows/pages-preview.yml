@@ -1,4 +1,4 @@
-name: Publish GitHub Pages preview
+name: Publish Lifeshots website
 
 on:
   push:
@@ -32,12 +32,12 @@ jobs:
         run: |
           python3 scripts/check_site.py
           node --check dist/app.js
-      - name: Package preview with versioned assets and noindex
-        run: python3 scripts/package_site.py --output pages-preview --preview --base-path /lifeshots-website/
+      - name: Package production with versioned assets
+        run: python3 scripts/package_site.py --output pages-production --base-path /
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
         with:
-          path: pages-preview
+          path: pages-production
 
   deploy:
     needs: package
@@ -49,6 +49,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Deploy preview
+      - name: Deploy production
         id: deployment
         uses: actions/deploy-pages@v4
