@@ -9,15 +9,46 @@ const photos=[
  {file:'da94f632e5f9c3fd',title:'An everyday muse',category:'portrait',label:'FASHION',alt:'Woman in blue dress and white hat seated in a city setting',post:'Dc_hkZ4o-_0'}
 ];
 let filtered=[...photos],current=0;const gallery=document.querySelector('#gallery'),dialog=document.querySelector('#lightbox');
-function render(){gallery.replaceChildren(...filtered.map((p,i)=>{const b=document.createElement('button');b.className='gallery-card';b.setAttribute('aria-label','View '+p.title);b.innerHTML=`<div class="image-wrap"><img loading="lazy" src="assets/${p.file}.jpg" alt="${p.alt}"></div><div class="card-meta"><h3>${p.title}</h3><span>${p.label}</span></div>`;b.onclick=()=>{current=i;showImage();dialog.showModal();document.querySelector('.floating-dock')?.classList.remove('is-visible');document.body.style.overflow='hidden'};return b}))}
+function render(){gallery.replaceChildren(...filtered.map((p,i)=>{const b=document.createElement('button');b.className='gallery-card';b.setAttribute('aria-label','View '+p.title);b.innerHTML=`<div class="image-wrap"><img loading="lazy" src="assets/${p.file}.jpg" alt="${p.alt}"></div><div class="card-meta"><h3>${p.title}</h3><span>${p.label}</span></div>`;b.onclick=()=>{current=i;showImage();dialog.showModal();document.querySelector('.floating-dock')?.classList.remove('is-visible');document.querySelector('.floating-dock').inert=true;document.body.style.overflow='hidden'};return b}))}
 function showImage(){const p=filtered[current];const im=document.querySelector('#lb-image');im.src=`assets/${p.file}.jpg`;im.alt=p.alt;document.querySelector('#lb-caption').textContent=`${p.title} · ${current+1} / ${filtered.length}`;document.querySelector('#lb-source').href=`https://www.instagram.com/lifeshots4u/p/${p.post}/`}
 document.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-filter]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));filtered=photos.filter(p=>b.dataset.filter==='all'||p.category===b.dataset.filter);render()});
-function closeGallery(){dialog.close();document.body.style.overflow=''}document.querySelector('.close').onclick=closeGallery;dialog.addEventListener('close',()=>document.body.style.overflow='');document.querySelector('.lb-prev').onclick=()=>{current=(current+filtered.length-1)%filtered.length;showImage()};document.querySelector('.lb-next').onclick=()=>{current=(current+1)%filtered.length;showImage()};dialog.addEventListener('click',e=>{if(e.target===dialog)closeGallery()});dialog.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')document.querySelector('.lb-prev').click();if(e.key==='ArrowRight')document.querySelector('.lb-next').click()});render();
-const menu=document.querySelector('.menu');menu.onclick=()=>{const open=menu.getAttribute('aria-expanded')!=='true';menu.setAttribute('aria-expanded',String(open));menu.innerHTML=open?'Close <span>✕</span>':'Menu <span>☰</span>';document.querySelector('nav').classList.toggle('open',open)};document.querySelectorAll('nav a').forEach(a=>a.onclick=()=>{menu.setAttribute('aria-expanded','false');menu.innerHTML='Menu <span>☰</span>';document.querySelector('nav').classList.remove('open')});
+function closeGallery(){dialog.close();document.body.style.overflow=''}document.querySelector('.close').onclick=closeGallery;dialog.addEventListener('close',()=>document.body.style.overflow='');document.querySelector('.lb-prev').onclick=()=>{current=(current+filtered.length-1)%filtered.length;showImage()};document.querySelector('.lb-next').onclick=()=>{current=(current+1)%filtered.length;showImage()};dialog.addEventListener('click',e=>{if(e.target===dialog)closeGallery()});dialog.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){e.preventDefault();document.querySelector('.lb-prev').click()}if(e.key==='ArrowRight'){e.preventDefault();document.querySelector('.lb-next').click()}});render();
+const menu=document.querySelector('.menu'),nav=document.querySelector('#nav');
+function setMenu(open){menu.setAttribute('aria-expanded',String(open));menu.innerHTML=open?'Close <span>✕</span>':'Menu <span>☰</span>';nav.classList.toggle('open',open)}
+menu.onclick=()=>setMenu(menu.getAttribute('aria-expanded')!=='true');
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&menu.getAttribute('aria-expanded')==='true'){setMenu(false);menu.focus()}});
+document.addEventListener('click',e=>{if(!e.target.closest('header'))setMenu(false)});
+addEventListener('resize',()=>{if(matchMedia('(min-width:641px)').matches)setMenu(false)});
 const testimonials=[{text:'Patient, open to our ideas, and full of suggestions that made the photographs even more graceful.',name:'Sem Kumar'},{text:'A professional team who listened to our ideas and made our big day even more memorable.',name:'Manpreet Dhiman'},{text:'A dedicated team of professionals who turn lifetime memories into wonderful photographs.',name:'Ranveer Brar'}];let qi=0;function quote(){document.querySelector('#quote').textContent=testimonials[qi].text;document.querySelector('#quote-name').textContent=testimonials[qi].name;document.querySelector('#quote-count').textContent=`0${qi+1} / 03`}document.querySelector('#prev-quote').onclick=()=>{qi=(qi+2)%3;quote()};document.querySelector('#next-quote').onclick=()=>{qi=(qi+1)%3;quote()};quote();
 document.querySelectorAll('[data-service]').forEach(a=>a.addEventListener('click',()=>document.querySelector('#service').value=a.dataset.service));
-const form=document.querySelector('#inquiry');let inquiryText='';const date=form.elements.date;const today=new Date();date.min=[today.getFullYear(),String(today.getMonth()+1).padStart(2,'0'),String(today.getDate()).padStart(2,'0')].join('-');
-form.addEventListener('input',()=>document.querySelector('#inquiry-result').hidden=true);form.addEventListener('submit',e=>{e.preventDefault();if(!form.reportValidity())return;const f=new FormData(form);inquiryText=`Hello Lifeshots! I'd love to discuss a shoot.\n\nName: ${f.get('name')}\nEmail: ${f.get('email')}\nPhone: ${f.get('phone')||'Not provided'}\nOccasion: ${f.get('service')}\nDate: ${f.get('date')}\nLocation: ${f.get('location')}\n\n${f.get('message')||''}`;document.querySelector('#whatsapp-inquiry').href='https://wa.me/919465573973?text='+encodeURIComponent(inquiryText);document.querySelector('#email-inquiry').href='mailto:lifeshots4u@gmail.com?subject='+encodeURIComponent('Photography inquiry — '+f.get('service'))+'&body='+encodeURIComponent(inquiryText);const result=document.querySelector('#inquiry-result');result.hidden=false;result.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'center'})});document.querySelector('#copy-inquiry').onclick=async function(){try{await navigator.clipboard.writeText(inquiryText);this.textContent='Inquiry copied'}catch{this.textContent='Select the inquiry text in your email app to copy it.'}};
+const form=document.querySelector('#inquiry');
+let inquiryText='';
+const date=form.elements.date;
+function updateMinDate(){const now=new Date();date.min=[now.getFullYear(),String(now.getMonth()+1).padStart(2,'0'),String(now.getDate()).padStart(2,'0')].join('-')}
+updateMinDate();date.addEventListener('focus',updateMinDate);document.addEventListener('visibilitychange',updateMinDate);
+const result=document.querySelector('#inquiry-result'),preview=document.querySelector('#inquiry-preview'),copyButton=document.querySelector('#copy-inquiry'),copyStatus=document.querySelector('#copy-status');
+function invalidateInquiry(){result.hidden=true;inquiryText='';copyStatus.textContent='';copyButton.textContent='Copy inquiry'}
+form.addEventListener('input',invalidateInquiry);form.addEventListener('change',invalidateInquiry);
+const requestedOccasion=new URLSearchParams(location.search).get('occasion');
+if([...form.elements.service.options].some(o=>o.value===requestedOccasion))form.elements.service.value=requestedOccasion;
+form.addEventListener('submit',e=>{
+ e.preventDefault();updateMinDate();
+ for(const field of ['name','email','phone','location','message'])form.elements[field].value=form.elements[field].value.trim();
+ if(!form.reportValidity())return;
+ const f=new FormData(form);
+ inquiryText=`Hello Lifeshots! I'd love to discuss a shoot.\n\nName: ${f.get('name')}\nEmail: ${f.get('email')}\nPhone: ${f.get('phone')||'Not provided'}\nOccasion: ${f.get('service')}\nDate: ${f.get('date')}\nLocation: ${f.get('location')}\n\n${f.get('message')||''}`;
+ preview.value=inquiryText;
+ document.querySelector('#whatsapp-inquiry').href='https://wa.me/919465573973?text='+encodeURIComponent(inquiryText);
+ document.querySelector('#email-inquiry').href='mailto:lifeshots4u@gmail.com?subject='+encodeURIComponent('Photography inquiry — '+f.get('service'))+'&body='+encodeURIComponent(inquiryText);
+ copyStatus.textContent='';copyButton.textContent='Copy inquiry';result.hidden=false;
+ result.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'center'});
+ preview.focus({preventScroll:true});
+});
+copyButton.onclick=async function(){
+ try{await navigator.clipboard.writeText(inquiryText);copyStatus.textContent='Inquiry copied.'}
+ catch{preview.focus();preview.select();copyStatus.textContent='Select and copy the prepared message above using your device’s copy command.'}
+};
 
 // Cinematic story selector, with user-controlled motion.
 const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)');
@@ -38,5 +69,5 @@ document.querySelectorAll('[data-filter]').forEach(b=>b.addEventListener('click'
 const revealTargets=document.querySelectorAll('.intro>*,.section-heading,.services,.process>div,.film-copy,.testimonial>*,.inquire-info,form,.faq>div');
 if('IntersectionObserver'in window){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('in-view');observer.unobserve(entry.target)}}),{threshold:.12});revealTargets.forEach(el=>{el.classList.add('reveal');observer.observe(el)})}
 const dock=document.querySelector('.floating-dock');let scrollQueued=false;
-function updateScroll(){dock.classList.toggle('is-visible',scrollY>document.querySelector('.hero').offsetHeight*.75&&!dialog.open);scrollQueued=false}
+function updateScroll(){const visible=scrollY>document.querySelector('.hero').offsetHeight*.75&&!dialog.open;dock.classList.toggle('is-visible',visible);dock.inert=!visible;scrollQueued=false}
 addEventListener('scroll',()=>{if(!scrollQueued){scrollQueued=true;requestAnimationFrame(updateScroll)}},{passive:true});dialog.addEventListener('close',updateScroll);updateScroll();

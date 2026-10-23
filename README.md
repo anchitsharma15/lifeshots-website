@@ -1,30 +1,35 @@
 # Lifeshots Photography
 
-Static HTML/CSS/JavaScript website. This repository is intended to become the source of truth for the production redesign. The visual prototype is preserved unchanged in this preparation package.
+Static photography website using HTML, CSS and JavaScript. GitHub is the source of truth; GitHub Pages serves the public preview.
 
-## Local preview
+- Preview: https://anchitsharma15.github.io/lifeshots-website/
+- Repository: https://github.com/anchitsharma15/lifeshots-website
+- Current launch status: [docs/launch-readiness.md](docs/launch-readiness.md)
+
+## Local preview and checks
 
 Run `python3 -m http.server 8080 --directory dist`, then open http://localhost:8080.
 
-## Checks
+Run `python3 scripts/check_site.py`, `node --check dist/app.js`, and `node --check dist/page.js`.
 
-Run `python3 scripts/check_site.py` and `node --check dist/app.js`.
-GitHub Actions runs these checks and packages `dist/` for review. It does **not** deploy anywhere.
+To reproduce the Pages preview artifact, run:
 
-## Ownership and deployment
+```
+python3 scripts/package_site.py --output pages-preview --preview --base-path /lifeshots-website/
+```
 
-Private GitHub repository: https://github.com/anchitsharma15/lifeshots-website. GitHub is the source of truth for the redesign. No deployment integration is configured; the workflow validates and packages only.
+The source in dist/ prepares production canonical URLs, robots rules and sitemap for lifeshots.in. Preview packaging adds noindex to every HTML page, blocks robots crawling, fingerprints CSS/JavaScript and adapts 404 asset paths. Noindex is not access control: the preview is public. Do not use preview indexing settings for the approved production launch.
 
-The original Sites repository and its hosting identity are separate. This package deliberately excludes `.openai/hosting.json` and Sites credentials; do not push GitHub changes to the Sites repository by mistake.
+## Deployment
 
-Read `docs/production-plan.md` before configuring hosting. Only `dist/` is intended for the web document root. Never upload the repository, backups, documentation, or `.git/` into the public document root.
+`validate.yml` checks source and packages an artifact. `pages-preview.yml` deploys the preview on main-branch website/packager changes or manual dispatch. The production domain and DNS have not been changed. The original private Sites prototype is separate; its hosting identity and credentials are intentionally excluded.
 
-## Inquiry behavior
+Only packaged website files belong in the web document root. Never publish backups, SQL, credentials, .git/ or private configuration. Current business paths are listed in docs/url-inventory.csv and retained as real pages.
 
-The form prepares a WhatsApp or email message. It does not store leads, send automatically, confirm availability, or reserve dates. Films link to Instagram. Keep these statements accurate in production.
+## Inquiry behavior and content
 
-## Content provenance
+The visitor reviews a locally prepared message and chooses WhatsApp or email. There is no automatic sending, lead storage, booking, availability confirmation or date reservation. Films open their original Instagram reel.
 
-Source baseline: `86d663d303a173f1fd3dc803cb88ed60ca5ddef5`, copied from the existing local prototype on 23 October 2026. Photography came from public @lifeshots4u posts according to the original README; original exports and client approval are still required. Testimonials are labelled summaries of feedback on lifeshots.in. Do not add unverified ratings, prices, awards, or statistics.
+Founder/history, services and contact information come from lifeshots.in. The dedicated contact-page address is used. Portfolio photography comes from @lifeshots4u public posts, as documented in the original prototype; original high-resolution exports and client content review are still outstanding. The official logo source is recorded in docs/logo-source.md. Testimonials are clearly labelled summaries, not new direct quotations or endorsements.
 
-The source uses the contact-page address but abbreviates it. Update it to the full verified contact-page address before release; the live homepage still differs. See the production plan for details.
+Original visual baseline: 86d663d303a173f1fd3dc803cb88ed60ca5ddef5. docs/source-manifest.json records that historical baseline, not current release hashes.

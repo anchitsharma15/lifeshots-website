@@ -10,3 +10,38 @@ header .brand-logo{filter:brightness(0) invert(1)}
 footer .brand .brand-logo{width:200px;height:50px}
 .signature-logo{width:132px;height:33px;object-fit:contain;flex-shrink:0}
 @media(max-width:640px){.brand .brand-logo{width:128px;height:32px}.signature-logo{width:100px;height:25px}.intro-caption{flex-wrap:wrap}}
+
+/* Production preparation: readable controls and preserved business pages. */
+@media(max-width:640px){input,select,textarea{font-size:16px}}
+#inquiry-preview{font-size:14px;line-height:1.6;min-height:220px;resize:vertical}
+#inquiry-result>label{margin-top:22px;margin-bottom:0}
+#copy-status{min-height:1.5em;color:#515156}
+.site-directory{position:static;display:flex;flex-direction:row;flex-wrap:wrap;gap:8px 24px;width:100%;padding:24px 0 0;border:0;border-radius:0;background:none;box-shadow:none;backdrop-filter:none;color:inherit}
+.site-directory a{font-size:12px;line-height:1.5;padding:6px 0;opacity:1}
+.detail-page header{color:var(--ink);background:#fffffff0;border-color:#dedee3}
+.detail-page header .brand-logo{filter:none}
+.detail-page .menu{color:var(--ink);background:#eee;border-color:#dedee3}
+.detail-breadcrumb{padding:130px 6% 0;display:flex;gap:14px;color:#6e6e73;font-size:12px}
+.detail-breadcrumb a{text-decoration:underline}
+.detail-intro{padding-top:65px;padding-bottom:65px;max-width:1400px}
+.detail-intro h1{font-size:clamp(48px,7.2vw,100px);line-height:1.03;max-width:1050px;margin:25px 0 30px}
+.detail-lede{max-width:720px;font-size:clamp(20px,2.3vw,28px);line-height:1.5;color:#6e6e73}
+.detail-intro .button{margin-top:12px}
+.detail-visual{margin:0 6%;height:600px;border-radius:30px;overflow:hidden;background:#f5f5f7}
+.detail-visual img{object-position:center 40%}
+.detail-copy{display:grid;grid-template-columns:1fr 1.2fr;gap:8%;padding-top:80px;padding-bottom:70px}
+.detail-copy h2{font-size:clamp(36px,4vw,58px)}
+.detail-copy p{font-size:18px;line-height:1.8;color:#515156;max-width:720px}
+.detail-copy p a{text-decoration:underline;color:var(--accent)}
+.detail-action{padding-top:0;padding-bottom:80px}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;padding-top:20px}
+.contact-grid h2{font-size:32px;letter-spacing:-1px}
+.contact-grid address{font-style:normal;font-size:17px;line-height:1.8;max-width:400px}
+.contact-grid a{display:block;overflow-wrap:anywhere}
+.contact-grid p{font-size:16px;line-height:1.7;max-width:440px;color:#515156}
+.detail-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding-top:15px}
+.detail-gallery a{display:flex;flex-direction:column;gap:16px;font-size:14px}
+.detail-gallery img{height:420px;border-radius:25px}
+@media(max-width:640px){.detail-breadcrumb{padding-top:105px;font-size:10px;flex-wrap:wrap}.detail-intro{padding-top:45px;padding-bottom:45px}.detail-intro h1{font-size:48px;overflow-wrap:anywhere}.detail-visual{height:420px;border-radius:22px}.detail-copy{grid-template-columns:1fr;gap:15px;padding-top:55px;padding-bottom:45px}.detail-copy p{font-size:16px}.contact-grid{grid-template-columns:1fr;gap:35px}.detail-gallery{grid-template-columns:1fr;gap:32px}.detail-gallery img{height:450px}.site-directory{gap:6px 18px}.site-directory a{font-size:12px}}
+@media(max-width:360px){header .brand .brand-logo{width:110px;height:27.5px}header>.nav-cta{padding:10px 12px;gap:8px}}
+.floating-dock{visibility:hidden}.floating-dock.is-visible{visibility:visible}
