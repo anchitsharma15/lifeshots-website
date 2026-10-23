@@ -1,11 +1,12 @@
-existing_path,proposed_path,recommendation,status
-/,/,Keep homepage,Discovered in public navigation; replacement not implemented
-/about-me/,/about-me/,Retain founder/about content,Discovered in public navigation; replacement not implemented
-/pre-wedding/,/pre-wedding/,Retain service content,Discovered in public navigation; replacement not implemented
-/wedding/,/wedding/,Retain service content,Discovered in public navigation; replacement not implemented
-/fashion/,/fashion/,Retain service content,Discovered in public navigation; replacement not implemented
-/celebrities/,/celebrities/,Retain service content; verify permissions,Discovered in public navigation; replacement not implemented
-/baby/,/baby/,Retain service content,Discovered in public navigation; replacement not implemented
-/maternity/,/maternity/,Retain service content,Discovered in public navigation; replacement not implemented
-/videography/,/videography/,Retain films content,Discovered in public navigation; replacement not implemented
-/contact-us/,/contact-us/,Retain contact details,Discovered in public navigation; replacement not implemented
+existing_path,replacement_path,status
+/,/,Matching static page prepared; same URL path
+/about-me/,/about-me/,Matching static page prepared; same URL path
+/photography-lifeshots-in-chandigarh-mohali-india/,/photography-lifeshots-in-chandigarh-mohali-india/,Matching static page prepared; same URL path
+/wedding/,/wedding/,Matching static page prepared; same URL path
+/pre-wedding/,/pre-wedding/,Matching static page prepared; same URL path
+/fashion/,/fashion/,Matching static page prepared; same URL path
+/celebrities/,/celebrities/,Matching static page prepared; same URL path
+/maternity/,/maternity/,Matching static page prepared; same URL path
+/baby/,/baby/,Matching static page prepared; same URL path
+/videography/,/videography/,Matching static page prepared; same URL path
+/contact-us/,/contact-us/,Matching static page prepared; same URL path

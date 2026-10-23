@@ -12,3 +12,5 @@ backups/
 *.sql.gz
 *.tar.gz
 *.zip
+/pages-preview/
+/checked-preview/
