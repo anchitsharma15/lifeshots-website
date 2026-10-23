@@ -21,7 +21,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&menu.getAttribute('
 document.addEventListener('click',e=>{if(!e.target.closest('header'))setMenu(false)});
 addEventListener('resize',()=>{if(matchMedia('(min-width:641px)').matches)setMenu(false)});
 const testimonials=[{text:'Patient, open to our ideas, and full of suggestions that made the photographs even more graceful.',name:'Sem Kumar'},{text:'A professional team who listened to our ideas and made our big day even more memorable.',name:'Manpreet Dhiman'},{text:'A dedicated team of professionals who turn lifetime memories into wonderful photographs.',name:'Ranveer Brar'}];let qi=0;function quote(){document.querySelector('#quote').textContent=testimonials[qi].text;document.querySelector('#quote-name').textContent=testimonials[qi].name;document.querySelector('#quote-count').textContent=`0${qi+1} / 03`}document.querySelector('#prev-quote').onclick=()=>{qi=(qi+2)%3;quote()};document.querySelector('#next-quote').onclick=()=>{qi=(qi+1)%3;quote()};quote();
-document.querySelectorAll('[data-service]').forEach(a=>a.addEventListener('click',()=>document.querySelector('#service').value=a.dataset.service));
+document.querySelectorAll('[data-service]').forEach(a=>a.addEventListener('click',()=>{document.querySelector('#service').value=a.dataset.service;invalidateInquiry()}));
 const form=document.querySelector('#inquiry');
 let inquiryText='';
 const date=form.elements.date;
