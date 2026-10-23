@@ -45,3 +45,11 @@ footer .brand .brand-logo{width:200px;height:50px}
 @media(max-width:640px){.detail-breadcrumb{padding-top:105px;font-size:10px;flex-wrap:wrap}.detail-intro{padding-top:45px;padding-bottom:45px}.detail-intro h1{font-size:48px;overflow-wrap:anywhere}.detail-visual{height:420px;border-radius:22px}.detail-copy{grid-template-columns:1fr;gap:15px;padding-top:55px;padding-bottom:45px}.detail-copy p{font-size:16px}.contact-grid{grid-template-columns:1fr;gap:35px}.detail-gallery{grid-template-columns:1fr;gap:32px}.detail-gallery img{height:450px}.site-directory{gap:6px 18px}.site-directory a{font-size:12px}}
 @media(max-width:360px){header .brand .brand-logo{width:110px;height:27.5px}header>.nav-cta{padding:10px 12px;gap:8px}}
 .floating-dock{visibility:hidden}.floating-dock.is-visible{visibility:visible}
+
+/* Keep gallery navigation and keyboard feedback clear on every screen. */
+.gallery-status{font-size:12px;color:#515156;margin:22px 0 0}
+.gallery-controls button:disabled{opacity:.35;cursor:default}
+.gallery-controls button:disabled:hover{background:#e3e3e8}
+.gallery-card:focus-visible{outline-offset:-5px;outline:3px solid #fff}
+.scene-player button{min-width:44px;min-height:44px}
+input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid #007aff}

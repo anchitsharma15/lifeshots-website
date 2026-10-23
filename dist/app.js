@@ -8,11 +8,11 @@ const photos=[
  {file:'4ee3b279d446e698',title:'Quiet elegance',category:'portrait',label:'PORTRAIT',alt:'Elegant portrait of a woman in a blue dress',post:'Dc8qqfHCcYA'},
  {file:'da94f632e5f9c3fd',title:'An everyday muse',category:'portrait',label:'FASHION',alt:'Woman in blue dress and white hat seated in a city setting',post:'Dc_hkZ4o-_0'}
 ];
-let filtered=[...photos],current=0;const gallery=document.querySelector('#gallery'),dialog=document.querySelector('#lightbox');
-function render(){gallery.replaceChildren(...filtered.map((p,i)=>{const b=document.createElement('button');b.className='gallery-card';b.setAttribute('aria-label','View '+p.title);b.innerHTML=`<div class="image-wrap"><img loading="lazy" src="assets/${p.file}.jpg" alt="${p.alt}"></div><div class="card-meta"><h3>${p.title}</h3><span>${p.label}</span></div>`;b.onclick=()=>{current=i;showImage();dialog.showModal();document.querySelector('.floating-dock')?.classList.remove('is-visible');document.querySelector('.floating-dock').inert=true;document.body.style.overflow='hidden'};return b}))}
+let filtered=[...photos],current=0,galleryOpener;const gallery=document.querySelector('#gallery'),dialog=document.querySelector('#lightbox');
+function render(){gallery.replaceChildren(...filtered.map((p,i)=>{const b=document.createElement('button');b.className='gallery-card';b.setAttribute('aria-label','View '+p.title);b.innerHTML=`<div class="image-wrap"><img loading="lazy" src="assets/${p.file}.jpg" alt="${p.alt}" decoding="async" width="512" height="640"></div><div class="card-meta"><h3>${p.title}</h3><span>${p.label}</span></div>`;b.setAttribute('aria-haspopup','dialog');b.setAttribute('aria-controls','lightbox');b.onclick=()=>{galleryOpener=b;current=i;showImage();dialog.showModal();document.querySelector('.floating-dock')?.classList.remove('is-visible');document.querySelector('.floating-dock').inert=true;document.body.style.overflow='hidden'};return b}))}
 function showImage(){const p=filtered[current];const im=document.querySelector('#lb-image');im.src=`assets/${p.file}.jpg`;im.alt=p.alt;document.querySelector('#lb-caption').textContent=`${p.title} · ${current+1} / ${filtered.length}`;document.querySelector('#lb-source').href=`https://www.instagram.com/lifeshots4u/p/${p.post}/`}
-document.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-filter]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));filtered=photos.filter(p=>b.dataset.filter==='all'||p.category===b.dataset.filter);render()});
-function closeGallery(){dialog.close();document.body.style.overflow=''}document.querySelector('.close').onclick=closeGallery;dialog.addEventListener('close',()=>document.body.style.overflow='');document.querySelector('.lb-prev').onclick=()=>{current=(current+filtered.length-1)%filtered.length;showImage()};document.querySelector('.lb-next').onclick=()=>{current=(current+1)%filtered.length;showImage()};dialog.addEventListener('click',e=>{if(e.target===dialog)closeGallery()});dialog.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){e.preventDefault();document.querySelector('.lb-prev').click()}if(e.key==='ArrowRight'){e.preventDefault();document.querySelector('.lb-next').click()}});render();
+document.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-filter]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));filtered=photos.filter(p=>b.dataset.filter==='all'||p.category===b.dataset.filter);render();document.querySelector('#gallery-status').textContent=`${filtered.length} ${filtered.length===1?'story':'stories'} shown`;requestAnimationFrame(updateGalleryControls)});
+function closeGallery(){dialog.close();document.body.style.overflow=''}document.querySelector('.close').onclick=closeGallery;dialog.addEventListener('close',()=>{document.body.style.overflow='';galleryOpener?.focus({preventScroll:true})});document.querySelector('.lb-prev').onclick=()=>{current=(current+filtered.length-1)%filtered.length;showImage()};document.querySelector('.lb-next').onclick=()=>{current=(current+1)%filtered.length;showImage()};dialog.addEventListener('click',e=>{if(e.target===dialog)closeGallery()});dialog.addEventListener('keydown',e=>{if(e.key==='Home'||e.key==='End'){e.preventDefault();current=e.key==='Home'?0:filtered.length-1;showImage()}if(e.key==='ArrowLeft'){e.preventDefault();document.querySelector('.lb-prev').click()}if(e.key==='ArrowRight'){e.preventDefault();document.querySelector('.lb-next').click()}});render();
 const menu=document.querySelector('.menu'),nav=document.querySelector('#nav');
 function setMenu(open){menu.setAttribute('aria-expanded',String(open));menu.innerHTML=open?'Close <span>✕</span>':'Menu <span>☰</span>';nav.classList.toggle('open',open)}
 menu.onclick=()=>setMenu(menu.getAttribute('aria-expanded')!=='true');
@@ -71,3 +71,13 @@ if('IntersectionObserver'in window){const observer=new IntersectionObserver(entr
 const dock=document.querySelector('.floating-dock');let scrollQueued=false;
 function updateScroll(){const visible=scrollY>document.querySelector('.hero').offsetHeight*.75&&!dialog.open;dock.classList.toggle('is-visible',visible);dock.inert=!visible;scrollQueued=false}
 addEventListener('scroll',()=>{if(!scrollQueued){scrollQueued=true;requestAnimationFrame(updateScroll)}},{passive:true});dialog.addEventListener('close',updateScroll);updateScroll();
+
+// Show when the horizontal collection has reached either end.
+function updateGalleryControls(){
+ const maxScroll=gallery.scrollWidth-gallery.clientWidth;
+ document.querySelector('#gallery-prev').disabled=gallery.scrollLeft<=2;
+ document.querySelector('#gallery-next').disabled=gallery.scrollLeft>=maxScroll-2;
+}
+gallery.addEventListener('scroll',updateGalleryControls,{passive:true});
+addEventListener('resize',updateGalleryControls);
+updateGalleryControls();

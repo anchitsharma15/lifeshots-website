@@ -32,7 +32,7 @@ for page in out.rglob('*.html'):
         # A 404 can be served at any unknown nested URL; use deployment-root paths.
         html = re.sub(r'((?:href|src)=")/(?!/)', lambda m: m.group(1) + args.base_path, html)
     if not args.preview:
-        html = html.replace('Independent redesign preview', 'Lifeshots Photography')
+        html = html.replace('Independent redesign preview', 'Lifeshots Photography').replace('Independent redesign concept • Prototype', 'Photography by Ganesh Hatha')
     if args.preview:
         html = re.sub(r'<meta name="robots"[^>]*>', '', html)
         html = html.replace('</head>', '<meta name="robots" content="noindex, nofollow"></head>')
