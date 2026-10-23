@@ -1,0 +1,28 @@
+name: Validate and package website
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check local links and assets
+        run: python3 scripts/check_site.py
+      - name: Check JavaScript syntax
+        run: node --check dist/app.js
+      - name: Package static files for review
+        uses: actions/upload-artifact@v4
+        with:
+          name: lifeshots-static-${{ github.sha }}
+          path: dist/
+          if-no-files-found: error

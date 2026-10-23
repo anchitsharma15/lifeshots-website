@@ -1,0 +1,25 @@
+{
+  "baseline_commit": "86d663d303a173f1fd3dc803cb88ed60ca5ddef5",
+  "sha256": {
+    "dist/app.js": "ad216a3ea7b42d62618134dbeb85d8eaf47686a3c0db75348e415325be8ea573",
+    "dist/assets/0b7c8761baa37335.jpg": "50214e7bde6cca3306f1dbf59f7f4e92a682b2cbb03ab5e60ddcf97b0a856c04",
+    "dist/assets/20597b1c45c51673.jpg": "ac1a5a0ad0131a8ad94118d438b891f3ec6dbc98982ff844cc6a6c2dbe5466c6",
+    "dist/assets/266389f8e4ebc553.jpg": "ab02b0e18405f92f96bc9dbc555b0af1b5f3eb0ce4626419ce73e6d9fdb0700c",
+    "dist/assets/329f343487a29455.jpg": "71b20c6681dc6f2f3d362d1058f99eec774bddd3c4a27babce95eb0778b5f8e3",
+    "dist/assets/3a341638052ce2c1.jpg": "527f67414036460fddb7fc05f3feaf86fca0d7554e1c6afeece8017d4e6c31c2",
+    "dist/assets/3c1465b3cde9a86c.jpg": "2264c693b4849775d453db9cab27131c52d5e6727a98ffa08616bb8326e1c546",
+    "dist/assets/43c5a6677b013999.jpg": "f7d801ee1b0286cf754d18dcd2996368efa68ab7af741239c28c0e90b5c2cd10",
+    "dist/assets/4ee3b279d446e698.jpg": "1faf7d83953b91bad09110b2aab0aea114406157256cd9c358ba951a2f5e9576",
+    "dist/assets/698731fbe0b804d4.jpg": "8481a239ea87f00c2b1630069d0b270cd2f5aacce166ec35c3f990116a10288f",
+    "dist/assets/7dead6dfb8dbee04.jpg": "2ba9c40031f7bfb3c097cd4465131f480bb56943c19e1f8ada85b6e40b6af2bf",
+    "dist/assets/88d291c0bc639451.jpg": "308e88725110ce3650e9e0aa2cd7d547bf95ed96abff9b9a1e260e7291672c23",
+    "dist/assets/b272b64107552586.jpg": "87278f0e1c6078387fb074fae200ef46b5dbd6f459b52e3ced07e4a76e110c07",
+    "dist/assets/b2a7ee19a2b8677a.jpg": "5b2ef7aa82f8ed48eb626a9097ddf5716bf83973ae7d357f35c55d9a0d3e9c21",
+    "dist/assets/d0d550f8c194cb7f.jpg": "b45d638b90566394078f95b4b31c5f2e2776a72dd9b34cd4329643fad7f01a67",
+    "dist/assets/d5aedc82b98ad3d2.jpg": "485e8163286c04035b8c9f75214a9157c1dbf45947d2e212d8959b60a8471a59",
+    "dist/assets/da94f632e5f9c3fd.jpg": "2cd548d94e9b9f750cca22965c5703fc968cdacad6229abe2ddc2ead8376c1d5",
+    "dist/assets/e16af4bf99d2c30d.jpg": "3dc98897229f66b73b73f36daf4dec6a7b9834b47ab9e357fc2a01d044490310",
+    "dist/index.html": "5031b4265606534a3c4f55ee0831c329874b54194377b6a00a42e7b4833a23d4",
+    "dist/style.css": "16eea3bb384dc1ad8e6907bfa7e66dad64a53085d1755c2beec3df90adb071b4"
+  }
+}

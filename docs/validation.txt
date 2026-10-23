@@ -1,0 +1,5 @@
+23 October 2026
+PASS: local HTML assets, anchors, unique IDs, CSS assets, dynamic portfolio images.
+PASS: Node.js app.js syntax check.
+PASS: every dist file byte-matches the clean supplied baseline; SHA-256 manifest generated.
+Not performed: browser regression, full accessibility/SEO audit, remote link validation, backup restore, cPanel/mail inspection, GitHub Actions run, deployment.

@@ -1,0 +1,14 @@
+# Secrets, hosting state and local artifacts
+.env
+.env.*
+!.env.example
+.openai/
+.DS_Store
+node_modules/
+__pycache__/
+work/
+backups/
+*.sql
+*.sql.gz
+*.tar.gz
+*.zip
