@@ -1,6 +1,11 @@
 name: Publish GitHub Pages preview
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - "dist/**"
+      - ".github/workflows/pages-preview.yml"
   workflow_dispatch:
 
 permissions:
