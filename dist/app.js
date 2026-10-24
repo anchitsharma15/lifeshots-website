@@ -20,7 +20,21 @@ nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMenu(fals
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&menu.getAttribute('aria-expanded')==='true'){setMenu(false);menu.focus()}});
 document.addEventListener('click',e=>{if(!e.target.closest('header'))setMenu(false)});
 addEventListener('resize',()=>{if(matchMedia('(min-width:641px)').matches)setMenu(false)});
-const testimonials=[{text:"Very nice service, Highly recommended",name:"Anish Nadda"},{text:"Team arrived on time and handled everything very professionally",name:"Diksha Jain"},{text:"They were so patient and got all of the photos clicked as I suggested",name:"sem kumar"}];let qi=0;function quote(){document.querySelector('#quote').textContent=testimonials[qi].text;document.querySelector('#quote-name').textContent=testimonials[qi].name;document.querySelector('#quote-count').textContent=`0${qi+1} / 03`}document.querySelector('#prev-quote').onclick=()=>{qi=(qi+2)%3;quote()};document.querySelector('#next-quote').onclick=()=>{qi=(qi+1)%3;quote()};quote();
+// Google review cards share the same dated, attributed selection as the reviews page.
+const reviewTrack=document.querySelector('#google-review-track'),reviewCards=[...reviewTrack.children];
+const reviewPrev=document.querySelector('#google-review-prev'),reviewNext=document.querySelector('#google-review-next');
+function updateReviewControls(){
+ const position=Math.round(reviewTrack.scrollLeft/(reviewCards[0].getBoundingClientRect().width+20));
+ const visible=Math.max(1,Math.round(reviewTrack.clientWidth/(reviewCards[0].getBoundingClientRect().width+20)));
+ reviewPrev.disabled=reviewTrack.scrollLeft<=2;
+ reviewNext.disabled=reviewTrack.scrollLeft>=reviewTrack.scrollWidth-reviewTrack.clientWidth-2;
+ document.querySelector('#google-review-position').textContent=`${visible===1?position+1:(position+1)+"–"+Math.min(position+visible,reviewCards.length)} of ${reviewCards.length} reviews`;
+}
+function moveReviews(direction){reviewTrack.scrollBy({left:direction*(reviewTrack.clientWidth+20),behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'})}
+reviewPrev.onclick=()=>moveReviews(-1);reviewNext.onclick=()=>moveReviews(1);
+reviewTrack.addEventListener('scroll',updateReviewControls,{passive:true});addEventListener('resize',updateReviewControls);
+reviewTrack.addEventListener('keydown',event=>{if(event.target===reviewTrack&&(event.key==='ArrowLeft'||event.key==='ArrowRight')){event.preventDefault();moveReviews(event.key==='ArrowRight'?1:-1)}});
+updateReviewControls();
 document.querySelectorAll('[data-service]').forEach(a=>a.addEventListener('click',()=>{document.querySelector('#service').value=a.dataset.service;invalidateInquiry()}));
 const form=document.querySelector('#inquiry');
 let inquiryText='';
