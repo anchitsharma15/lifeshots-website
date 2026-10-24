@@ -4,7 +4,7 @@
   "sourceUrl": "https://www.google.com/search?q=lifeshots+photography#lrd=0x390fefb982ee84ef:0xc4641d6e782abe5e,1,,,,",
   "capturedOn": "2026-10-24",
   "rating": 4.9,
-  "reviewCount": 115,
+  "reviewCount": 113,
   "reviews": [
     {
       "date": "2 weeks ago",
@@ -737,24 +737,6 @@
     },
     {
       "date": "4 years ago",
-      "id": "ChZDSUhNMG9nS0VJQ0FnSUNPNU5fUU5nEAE",
-      "name": "Samdeep Soni",
-      "profile": "https://www.google.com/maps/contrib/109872433590590797633/reviews?hl=en-IN",
-      "rating": 1,
-      "summary": "Reports a very disappointing service experience with the photographer.",
-      "url": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChZDSUhNMG9nS0VJQ0FnSUNPNU5fUU5nEAE!2m1!1s0x0:0xc4641d6e782abe5e!3m1!1s2@1:CIHM0ogKEICAgICO5N_QNg%7C%7C?hl=en-GB"
-    },
-    {
-      "date": "4 years ago",
-      "id": "ChdDSUhNMG9nS0VJQ0FnSUNPNU1mNWl3RRAB",
-      "name": "Ravneet Bathla",
-      "profile": "https://www.google.com/maps/contrib/104916857009582156242/reviews?hl=en-IN",
-      "rating": 1,
-      "summary": "Describes the service as unprofessional and does not recommend it.",
-      "url": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChdDSUhNMG9nS0VJQ0FnSUNPNU1mNWl3RRAB!2m1!1s0x0:0xc4641d6e782abe5e!3m1!1s2@1:CIHM0ogKEICAgICO5Mf5iwE%7C%7C?hl=en-GB"
-    },
-    {
-      "date": "4 years ago",
       "id": "ChdDSUhNMG9nS0VJQ0FnSUQydTQzR3lnRRAB",
       "name": "Guddu Ashu",
       "profile": "https://www.google.com/maps/contrib/100084731336207118098/reviews?hl=en-IN",
@@ -1041,5 +1023,7 @@
       "summary": "Recommends the photographer after an enjoyable experience, with positive feedback on service and value.",
       "url": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChdDSUhNMG9nS0VJQ0FnSUR5MjZDQ3ZBRRAB!2m1!1s0x0:0xc4641d6e782abe5e!3m1!1s2@1:CIHM0ogKEICAgIDy26CCvAE%7C%7C?hl=en-GB"
     }
-  ]
+  ],
+  "sourceReviewCount": 115,
+  "minimumDisplayedRating": 3
 }

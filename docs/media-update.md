@@ -14,7 +14,7 @@
 
 **Instagram:** The public profile was retrieved, but its recent-post data endpoint requires login. Browser access to Chrome was not approved. No fresh photos were imported and no automatic Instagram feed is claimed. Continue from a user-authorized Instagram connection or client-provided original exports and post links; the existing eight Instagram images remain.
 
-**Google reviews:** The client chose a manual public snapshot instead of API access. The website now includes all 115 public ratings observed on 24 October 2026: 105 attributed comment/tag summaries and ten rating-only entries, with source links and a snapshot label. See reviews-source.md. This does not update automatically.
+**Google reviews:** The client chose a manual public snapshot instead of API access. The website now includes 113 selected public ratings of three stars or higher from 24 October 2026: 103 attributed comment/tag summaries and ten rating-only entries, with source links and a snapshot label. See reviews-source.md. This does not update automatically.
 
 Primary references:
 - https://developers.google.com/my-business/reference/rest/v4/accounts.locations.reviews/list

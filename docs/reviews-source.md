@@ -11,7 +11,8 @@ Captured on 24 October 2026 through the public Google reviews panel, sorted newe
 - 105 entries contain text or feedback tags; ten are rating-only.
 - The published data contains attributed summaries, ratings, relative review ages as observed, and source links. It does not republish full long-form review text, owner replies or reviewer photographs.
 - 100 entries have original review links exposed by the Google sharing control. Fifteen link to the reviewer's public Google reviews profile.
-- Positive and critical feedback are included. No review was removed based on its rating.
+- Following the client’s selection request, the current website displays only reviews rated three stars or above: 113 entries (112 five-star and one three-star), comprising 103 comment/tag summaries and ten rating-only entries. The two one-star entries are omitted from both the rendered page and the published JSON.
+- The overall Google score remains 4.9 from the full 115-rating source snapshot and is labelled separately from the website selection.
 - This is a dated manual snapshot, not a live feed. Refresh it deliberately when needed, retaining attribution and changes visible at the source.
 - The homepage features three short, labelled excerpts from Anish Nadda, Diksha Jain and sem kumar. The separate reviews page labels its paraphrases as summaries.
 

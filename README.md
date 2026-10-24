@@ -38,4 +38,4 @@ Original visual baseline: 86d663d303a173f1fd3dc803cb88ed60ca5ddef5. docs/source-
 
 Imported photography is stored losslessly in numbered media/ archive parts. scripts/prepare_media.py verifies their SHA-256 hashes and restores all image paths before packaging. Keep the parts and manifest together. New standalone media can also be added directly under dist/assets/.
 
-A manually captured Google reviews snapshot is available at /reviews/: 115 ratings, 105 attributed comment/tag summaries, and ten rating-only entries. It is labelled with the capture date and does not auto-refresh. docs/reviews-source.md records provenance. The footer contains the client-requested ArunodayCare maintenance credit.
+A manually captured Google reviews snapshot is available at /reviews/: 113 selected ratings of three stars or higher, 103 attributed comment/tag summaries, and ten rating-only entries. It is labelled with the capture date and does not auto-refresh. docs/reviews-source.md records provenance. The footer contains the client-requested ArunodayCare maintenance credit.
