@@ -8,7 +8,7 @@ Static photography website using HTML, CSS and JavaScript. GitHub is the source 
 
 ## Local preview and checks
 
-Run `python3 -m http.server 8080 --directory dist`, then open http://localhost:8080.
+Run `python3 scripts/prepare_media.py` to restore the versioned media packs, then `python3 -m http.server 8080 --directory dist`, then open http://localhost:8080.
 
 Run `python3 scripts/check_site.py`, `node --check dist/app.js`, and `node --check dist/page.js`.
 
@@ -30,8 +30,10 @@ Only packaged website files belong in the web document root. Never publish backu
 
 ## Inquiry behavior and content
 
-The visitor reviews a locally prepared message and chooses WhatsApp or email. There is no automatic sending, lead storage, booking, availability confirmation or date reservation. Films open their original Instagram reel.
+The visitor reviews a locally prepared message and chooses WhatsApp or email. There is no automatic sending, lead storage, booking, availability confirmation or date reservation. Eleven YouTube films are included, with two on-site players featured on the homepage and thumbnail links for other films; the original Instagram reel remains linked.
 
-Founder/history, services and contact information come from lifeshots.in. The dedicated contact-page address is used. Portfolio photography comes from @lifeshots4u public posts, as documented in the original prototype; original high-resolution exports and client content review are still outstanding. The official logo source is recorded in docs/logo-source.md. Testimonials are clearly labelled summaries, not new direct quotations or endorsements.
+Founder/history, services and contact information come from lifeshots.in. The dedicated contact-page address is used. Portfolio photography combines 164 restored legacy-site photos with the existing @lifeshots4u selection; original high-resolution exports and client content review are still outstanding. The official logo source is recorded in docs/logo-source.md. Testimonials are clearly labelled summaries, not new direct quotations or endorsements.
 
 Original visual baseline: 86d663d303a173f1fd3dc803cb88ed60ca5ddef5. docs/source-manifest.json records that historical baseline, not current release hashes.
+
+Imported photography is stored losslessly in numbered media/ archive parts. scripts/prepare_media.py verifies their SHA-256 hashes and restores all image paths before packaging. Keep the parts and manifest together. New standalone media can also be added directly under dist/assets/.

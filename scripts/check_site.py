@@ -4,6 +4,8 @@ from pathlib import Path
 from urllib.parse import unquote, urlsplit
 import re
 import sys
+from prepare_media import prepare_media
+prepare_media()
 
 root = Path(__file__).resolve().parents[1] / "dist"
 errors = []
