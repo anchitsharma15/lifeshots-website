@@ -18,8 +18,8 @@ function setMenu(open){menu.setAttribute('aria-expanded',String(open));menu.inne
 menu.onclick=()=>setMenu(menu.getAttribute('aria-expanded')!=='true');
 nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&menu.getAttribute('aria-expanded')==='true'){setMenu(false);menu.focus()}});
-document.addEventListener('click',e=>{if(!e.target.closest('header'))setMenu(false)});
-addEventListener('resize',()=>{if(matchMedia('(min-width:641px)').matches)setMenu(false)});
+document.addEventListener('click',e=>{if(!e.composedPath().includes(document.querySelector('header')))setMenu(false)});
+addEventListener('resize',()=>{if(matchMedia('(min-width:1001px)').matches)setMenu(false)});
 // Google review cards share the same dated, attributed selection as the reviews page.
 const reviewTrack=document.querySelector('#google-review-track'),reviewCards=[...reviewTrack.children];
 const reviewPrev=document.querySelector('#google-review-prev'),reviewNext=document.querySelector('#google-review-next');
