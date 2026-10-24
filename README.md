@@ -30,10 +30,12 @@ Only packaged website files belong in the web document root. Never publish backu
 
 ## Inquiry behavior and content
 
-The visitor reviews a locally prepared message and chooses WhatsApp or email. There is no automatic sending, lead storage, booking, availability confirmation or date reservation. Eleven YouTube films are included, with two on-site players featured on the homepage and thumbnail links for other films; the original Instagram reel remains linked.
+The visitor reviews a locally prepared message and chooses WhatsApp or email. There is no automatic sending, lead storage, booking, availability confirmation or date reservation. Thirteen YouTube films are included, with two on-site players featured on the homepage and thumbnail links for other films; the original Instagram reel remains linked.
 
-Founder/history, services and contact information come from lifeshots.in. The dedicated contact-page address is used. Portfolio photography combines 164 restored legacy-site photos with the existing @lifeshots4u selection; original high-resolution exports and client content review are still outstanding. The official logo source is recorded in docs/logo-source.md. Testimonials are clearly labelled summaries, not new direct quotations or endorsements.
+Founder/history, services and contact information come from lifeshots.in. The client-confirmed Amayra Emporio address is used in contact text, directions and structured data. Portfolio photography combines 164 restored legacy-site photos with the existing @lifeshots4u selection; original high-resolution exports and client content review are still outstanding. The official logo source is recorded in docs/logo-source.md. Testimonials are clearly labelled summaries, not new direct quotations or endorsements.
 
 Original visual baseline: 86d663d303a173f1fd3dc803cb88ed60ca5ddef5. docs/source-manifest.json records that historical baseline, not current release hashes.
 
 Imported photography is stored losslessly in numbered media/ archive parts. scripts/prepare_media.py verifies their SHA-256 hashes and restores all image paths before packaging. Keep the parts and manifest together. New standalone media can also be added directly under dist/assets/.
+
+A manually captured Google reviews snapshot is available at /reviews/: 115 ratings, 105 attributed comment/tag summaries, and ten rating-only entries. It is labelled with the capture date and does not auto-refresh. docs/reviews-source.md records provenance. The footer contains the client-requested ArunodayCare maintenance credit.

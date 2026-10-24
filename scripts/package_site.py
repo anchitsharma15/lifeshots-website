@@ -20,7 +20,7 @@ if not args.base_path.startswith('/') or not args.base_path.endswith('/'):
     parser.error('Base path must begin and end with /')
 shutil.copytree(source, out, dirs_exist_ok=True)
 versions = {}
-for name in ('style.css', 'app.js', 'page.js', 'media.js'):
+for name in ('style.css', 'app.js', 'page.js', 'media.js', 'reviews.js'):
     asset = out / name
     version = sha256(asset.read_bytes()).hexdigest()[:12]
     versioned = asset.with_name(f'{asset.stem}.{version}{asset.suffix}')

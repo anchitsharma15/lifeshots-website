@@ -10,11 +10,11 @@
 
 ## Open items
 
-**Address:** The old homepage lists 09 Acme Gulmohar, Sector 125, Mohali; the old contact page lists Showroom 94, Amayra Emporio, Kharar–Kurali Road, SAS Nagar, Punjab 140301. The current website consistently uses the contact-page address, including structured data. Client confirmation is still required before replacing it. The Kangra branch remains as previously listed.
+**Address:** Client confirmed Showroom 94, Amayra Emporio, Kharar - Kurali Rd, Sahibzada Ajit Singh Nagar, Punjab 140301. Homepage, contact page, directions and structured data use this address.
 
 **Instagram:** The public profile was retrieved, but its recent-post data endpoint requires login. Browser access to Chrome was not approved. No fresh photos were imported and no automatic Instagram feed is claimed. Continue from a user-authorized Instagram connection or client-provided original exports and post links; the existing eight Instagram images remain.
 
-**All Google reviews:** Google's Business Profile API can paginate all reviews for a verified location the authenticated account manages. This needs client owner/manager access, an approved Google Cloud project and OAuth business.manage authorization. A small server-side or scheduled job can fetch each page, retain attribution, and publish a review feed for the static site. Keep OAuth credentials outside browser JavaScript and GitHub source. The website does not currently fetch Google review data.
+**Google reviews:** The client chose a manual public snapshot instead of API access. The website now includes all 115 public ratings observed on 24 October 2026: 105 attributed comment/tag summaries and ten rating-only entries, with source links and a snapshot label. See reviews-source.md. This does not update automatically.
 
 Primary references:
 - https://developers.google.com/my-business/reference/rest/v4/accounts.locations.reviews/list
