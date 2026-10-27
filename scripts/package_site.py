@@ -38,6 +38,12 @@ for page in out.rglob('*.html'):
     if args.preview:
         html = re.sub(r'<meta name="robots"[^>]*>', '', html)
         html = html.replace('</head>', '<meta name="robots" content="noindex, nofollow"></head>')
+    # Supply a standard icon at the origin root and a new URL to refresh stale browser icons.
+    icon_prefix = args.base_path if page.name == '404.html' else ('../' * len(page.relative_to(out).parts[:-1]))
+    icons = (f'<link rel="icon" href="{icon_prefix}favicon.ico?v=lifeshots-20261027" type="image/x-icon">'
+             f'<link rel="apple-touch-icon" href="{icon_prefix}apple-touch-icon.png?v=lifeshots-20261027" sizes="180x180">')
+    html = re.sub(r'<link rel="(?:icon|apple-touch-icon)"[^>]*>', '', html)
+    html = html.replace('</head>', icons + '</head>')
     page.write_text(html)
 if args.preview:
     (out / 'robots.txt').write_text('User-agent: *\nDisallow: /\n')
